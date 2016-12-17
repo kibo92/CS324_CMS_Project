@@ -14,24 +14,18 @@
             <div class="col-md-8">
                 
                 <?php 
-                
-                //Provera da li je search unet ili trazen kako se ne bi prikazivala error poruka
-                if(isset($_POST["submit"])) {
-                    $search = $_POST["search"];
-                    //Upit za bazu za pretragu
-                    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
+                if(isset($_POST["submit"])) {   // Provera da li je search unet ili trazen kako se ne bi prikazivala error poruka
+                    $search = $_POST["search"]; // Globalna post mesto GET, radi isto samo bez prikazivanja u url, sigurnija da kazemo
+                    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' "; // Upit za bazu za pretragu, % je wildcard
                     $search_query = mysqli_query($connection, $query);
                     if (!$search_query) {
                         die("Query failed " . mysqli_error($connection));
                     }
-                    //Provera da li ima rezultata u pretrazi
-                    $count = mysqli_num_rows($search_query);
+                    $count = mysqli_num_rows($search_query); //Provera da li ima rezultata u pretrazi
                     if($count == 0) {
                         echo "<h3>NO RESULT</h3>";
                     } else {
-                        
-                         
-                 
+
                     // Za prikaz koristimo while petlju    
                         while($row = mysqli_fetch_assoc($search_query)) {
                             $post_title = $row["post_title"];
@@ -40,7 +34,7 @@
                             $post_image = $row["post_image"];
                             $post_content = $row["post_content"];
                  
-                ?>   
+                  ?>   
                          
                      <h1 class="page-header">
                     Page Heading
@@ -64,7 +58,7 @@
                 <hr>      
                              
                                     
-                 <?php } 
+                 <?php } // Gasimo i palimo php kako bi se html forma prikazala u petlji i popunila podacima iz baze, pratiti zagrade gde pocinju gore
                         
                     }
                 }
