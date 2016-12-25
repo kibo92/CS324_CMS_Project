@@ -1,10 +1,10 @@
  <!-- Header -->
-<?php include "includes/header.php"; ?>
+<?php include "includes/admin_header.php"; ?>
 
  <div id="wrapper">
 
  <!-- Navigation -->
- <?php include "includes/navigation.php"; ?>
+ <?php include "includes/admin_navigation.php"; ?>
         
  
 
@@ -34,6 +34,12 @@
                     
                     
                     <div class="col-xs-6">
+                       
+                       <?php 
+                            $query = "SELECT * FROM categories";
+                            $select_categories = mysqli_query($connection, $query);   
+                        ?>      
+                       
                         <table class="table table-bordered table-hover"> <!--Koristimo bootstrap klase radi dizajna-->
                             <thread>
                                 <tr>
@@ -42,10 +48,18 @@
                                 </tr>
                             </thread>
                             <tbody>
-                                <tr>
-                                    <td>Baseball Category</td>
-                                    <td>Basketball Category</td>
-                                </tr>
+                               
+                               <?php
+                                    while($row = mysqli_fetch_assoc($select_categories)) {
+                                        $cat_id = $row["cat_id"];
+                                        $cat_title = $row["cat_title"];
+                                        echo "<tr>";
+                                        echo "<td>{$cat_id}</td>"; // srednje zagrade just radi vizuelnog odvajanja varijabli i stringa moze i bez njih
+                                        echo "<td>{$cat_title}</td>";
+                                        echo "</tr>";
+                                    }
+                               ?>
+
                             </tbody>
                         </table>
                     </div>
@@ -59,4 +73,4 @@
     </div> <!-- /#page-wrapper -->
 
 
-<?php include "includes/footer.php" ?>  <!-- Footer -->
+<?php include "includes/admin_footer.php" ?>  <!-- Footer -->
