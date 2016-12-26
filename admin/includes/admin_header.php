@@ -1,4 +1,4 @@
-<?php ob_start(); ?> <!-- Output buffering  trebace kada redirektujemo korisnike ili delove koda-->
+<?php ob_start(); ?>  <!-- Output buffering  trebace kada redirektujemo korisnike ili delove koda-->
 <?php include "../includes/db.php" ?>
 <!DOCTYPE html>
 <html lang="en">

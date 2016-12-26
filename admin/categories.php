@@ -50,6 +50,15 @@
                                 <input class="btn btn-primary" type="submit" name="submit" value="Add Category">
                             </div>
                         </form>
+                        
+                    <?php
+                        if(isset($_GET['edit'])) {
+                            $cat_id = $_GET['edit'];
+                            include "includes/update_categories.php";
+                        }    
+                    ?>
+                        
+                        
                     </div> <!--Kategorija forma-->
                                    
                     <div class="col-xs-6">
@@ -73,6 +82,7 @@
                                         echo "<td>{$cat_id}</td>"; // srednje zagrade just radi vizuelnog odvajanja varijabli i stringa moze i bez njih
                                         echo "<td>{$cat_title}</td>";
                                         echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
+                                        echo "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
                                         echo "</tr>";
                                     }
                                ?>
