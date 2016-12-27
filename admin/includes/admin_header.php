@@ -1,5 +1,6 @@
 <?php ob_start(); ?>  <!-- Output buffering  trebace kada redirektujemo korisnike ili delove koda-->
-<?php include "../includes/db.php" ?>
+<?php include "../includes/db.php"; ?>
+<?php include "functions.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 
