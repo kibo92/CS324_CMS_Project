@@ -1,5 +1,15 @@
 <?php
 
+    function comfirmQuery($result) {
+         global $connection;
+         if(!$result) {
+         die("Query failed " . mysqli_error($connection));
+     }
+    }
+
+
+
+
     // FUNKCIJA ZA DODAVANJE KATEGORIJA 
     function insert_categories() {
             global $connection;
